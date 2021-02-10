@@ -1,0 +1,43 @@
+.singleMovieTitle {
+  font-size     : 4rem;
+  font-weight   : 200;
+  line-height   : 1.2;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  margin-bottom : 0.5rem;
+}
+
+.singleMovieSecondryHeadings {
+  font-weight   : 700;
+  line-height   : 1;
+  text-transform: uppercase;
+  color         : #b0bec5;
+  font-size     : 1rem;
+}
+
+.singleMoviePrimaryHeadings {
+  font-weight   : 700;
+  text-transform: uppercase;
+  margin-bottom : 1rem;
+  font-size     : 1rem;
+  color         : #263238;
+}
+
+.geners {
+  margin-bottom: 2rem;
+
+  .generName {
+    -webkit-box-align: center;
+    align-items      : center;
+    font-size        : 1.1rem;
+    line-height      : 1;
+    text-transform   : uppercase;
+    margin-right     : 1rem;
+  }
+}
+
+.backBtn {
+  background-color: #263238 !important;
+  color           : #fff !important;
+  border-radius   : 15px !important;
+}
