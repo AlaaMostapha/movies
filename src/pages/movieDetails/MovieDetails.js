@@ -76,9 +76,9 @@ const MovieDetails = (props) => {
                     the genres
                   </Typography>
                   <Grid container className="geners">
-                    {singleMovie.genres.map((gener) => {
+                    {singleMovie.genres.map((gener, i) => {
                       return (
-                        <div>
+                        <div key={i}>
                           <PlayCircleFilledIcon style={{ fontSize: "1rem" }} />
                           <span className="generName">{gener.name}</span>
                         </div>

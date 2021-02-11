@@ -42,9 +42,14 @@ const MoviesList = () => {
         </Grid>
       );
     } else if (searchMovie) {
-      return searchMovie.results.map((movie) => {
+      return searchMovie.results.map((movie, i) => {
         return (
-          <Grid item xs={3} onClick={() => history.push(`/movies/${movie.id}`)}>
+          <Grid
+            item
+            xs={3}
+            onClick={() => history.push(`/movies/${movie.id}`)}
+            key={i}
+          >
             <MovieCard
               img={movie.poster_path}
               title={movie.title}
