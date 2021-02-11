@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 
-export default function Btn(props) {
+const Btn = (props) => {
   const { color, text, href, onClick, ...rest } = props;
   return (
     <Button
@@ -14,4 +14,6 @@ export default function Btn(props) {
       {text}
     </Button>
   );
-}
+};
+
+export default Btn;

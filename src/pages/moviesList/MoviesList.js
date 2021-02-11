@@ -9,7 +9,7 @@ import CustomTextField from "../../components/input/customInput";
 import MovieCard from "../../components/card/Card";
 import Loader from "../../components/loader/Loader";
 import history from "../../routes/history";
-function MoviesList() {
+const MoviesList = () => {
   const dispatch = useDispatch();
   const {
     moviesReducer: { movies },
@@ -98,6 +98,6 @@ function MoviesList() {
       </Grid>
     </Container>
   );
-}
+};
 
 export default MoviesList;

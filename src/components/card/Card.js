@@ -4,7 +4,7 @@ import CardContent from "@material-ui/core/CardContent";
 import { CardActionArea, CardMedia, Typography } from "@material-ui/core";
 import { useStyles } from "./style";
 import Rate from "../rate/Rate";
-export default function MovieCard(props) {
+const MovieCard = (props) => {
   const classes = useStyles();
   const [state, setState] = React.useState({
     raised: false,
@@ -46,4 +46,5 @@ export default function MovieCard(props) {
       </CardActionArea>
     </Card>
   );
-}
+};
+export default MovieCard;

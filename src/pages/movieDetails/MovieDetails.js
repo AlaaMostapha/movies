@@ -8,7 +8,7 @@ import Btn from "../../components/btn/Btn";
 import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
 import Loader from "../../components/loader/Loader";
 
-function MovieDetails(props) {
+const MovieDetails = (props) => {
   const dispatch = useDispatch();
   const singleMovie = useSelector(
     (state) => state.singleMovieReducer.singleMovie
@@ -119,6 +119,6 @@ function MovieDetails(props) {
       )}
     </Container>
   );
-}
+};
 
 export default MovieDetails;
