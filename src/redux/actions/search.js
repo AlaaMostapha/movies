@@ -1,4 +1,4 @@
-import * as actionType from "../actionTypes";
+import * as actionType from "../types/search";
 
 //MOVIES search
 export const searchForMovieRequest = (query) => ({

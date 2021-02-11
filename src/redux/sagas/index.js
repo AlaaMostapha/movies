@@ -1,14 +1,16 @@
-import { takeEvery, all } from "redux-saga/effects";
-import { handleGetMovies, handleSearch } from "./movies";
+import { takeLatest, all, call } from "redux-saga/effects";
+import { handleGetMovies } from "./movies";
+import { handleSearch } from "./search";
 import { handleGetSingleMovie } from "./singleMovie";
-
-import * as actionTypes from "../actionTypes";
+import * as moviesActionType from "../types/movies";
+import * as movieActionType from "../types/singleMovie";
+import * as searchActionType from "../types/search";
 function* watchAll() {
-  yield all([takeEvery(actionTypes.MOVIES_REQUEST, handleGetMovies)]);
   yield all([
-    takeEvery(actionTypes.SINGLE_MOVIE_REQUEST, handleGetSingleMovie),
+    takeLatest(moviesActionType.MOVIES_REQUEST, handleGetMovies),
+    takeLatest(movieActionType.SINGLE_MOVIE_REQUEST, handleGetSingleMovie),
+    takeLatest(searchActionType.SEARCH_MOVIE_REQUEST, handleSearch),
   ]);
-  yield all([takeEvery(actionTypes.SEARCH_MOVIE_REQUEST, handleSearch)]);
 }
 
 export default watchAll;

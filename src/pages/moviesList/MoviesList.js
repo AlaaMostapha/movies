@@ -11,8 +11,10 @@ import Loader from "../../components/loader/Loader";
 import history from "../../routes/history";
 function MoviesList() {
   const dispatch = useDispatch();
-  const movies = useSelector((state) => state.moviesReducer.movies);
-  const searchMovie = useSelector((state) => state.moviesReducer.searchMovie);
+  const {
+    moviesReducer: { movies },
+    searchReducer: { searchMovie },
+  } = useSelector((state) => state);
   useEffect(() => {
     //when component mount get allmovies
     dispatch(moviesActions.moviesRequest());

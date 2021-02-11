@@ -1,6 +1,6 @@
 //reducer(action,state) //return update state
 
-import * as actionType from "../actionTypes";
+import * as actionType from "../types/singleMovie";
 export default function singleMovieReducer(state = {}, action) {
   switch (action.type) {
     case actionType.SINGLE_MOVIE_REQUEST: {
