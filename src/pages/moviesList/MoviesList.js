@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
-import "./MoviesList.scss";
 import { Container, Grid, Typography } from "@material-ui/core";
+import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import * as moviesActions from "../../redux/actions/movies";
 import * as searchActions from "../../redux/actions/search";
-import { useForm } from "react-hook-form";
 import CustomTextField from "../../components/input/customInput";
 import MovieCard from "../../components/card/Card";
 import Loader from "../../components/loader/Loader";
 import history from "../../routes/history";
+import "./MoviesList.scss";
 const MoviesList = () => {
   const dispatch = useDispatch();
   const {

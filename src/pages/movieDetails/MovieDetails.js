@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import "./MovieDetails.scss";
+import { Container, Grid, Typography } from "@material-ui/core";
+import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
 import { useDispatch, useSelector } from "react-redux";
 import * as singleMovieActions from "../../redux/actions/singleMovie";
-import { Container, Grid, Typography } from "@material-ui/core";
 import Rate from "../../components/rate/Rate";
 import Btn from "../../components/btn/Btn";
-import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
 import Loader from "../../components/loader/Loader";
+import "./MovieDetails.scss";
 
 const MovieDetails = (props) => {
   const dispatch = useDispatch();

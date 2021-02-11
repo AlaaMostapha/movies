@@ -2,8 +2,8 @@ import React from "react";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { CardActionArea, CardMedia, Typography } from "@material-ui/core";
-import { useStyles } from "./style";
 import Rate from "../rate/Rate";
+import { useStyles } from "./style";
 const MovieCard = (props) => {
   const classes = useStyles();
   const [state, setState] = React.useState({
