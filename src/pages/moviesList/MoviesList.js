@@ -26,9 +26,7 @@ function MoviesList() {
     defaultValues: defaultValues,
   });
   const onSubmit = (values) => {
-    console.log("form state", values.search);
     dispatch(searchActions.searchForMovieRequest(values.search));
-    console.log("movies", movies);
   };
   const createList = () => {
     if (movies) {
@@ -42,7 +40,6 @@ function MoviesList() {
         </Grid>
       );
     } else if (searchMovie) {
-      console.log(searchMovie.results);
       return searchMovie.results.map((movie) => {
         return (
           <Grid item xs={3} onClick={() => history.push(`/movies/${movie.id}`)}>

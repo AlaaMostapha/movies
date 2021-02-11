@@ -1,5 +1,3 @@
-//reducer(action,state) //return update state
-
 import * as actionType from "../actionTypes";
 export default function moviesReducer(state = {}, action) {
   switch (action.type) {
