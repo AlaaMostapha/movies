@@ -10,10 +10,9 @@ import "./MovieDetails.scss";
 
 const MovieDetails = (props) => {
   const dispatch = useDispatch();
-  const singleMovie = useSelector(
-    (state) => state.singleMovieReducer.singleMovie
-  );
-
+  const {
+    singleMovieReducer: { singleMovie },
+  } = useSelector((state) => state);
   useEffect(() => {
     const { movieId } = props.match.params;
     // request item from api
