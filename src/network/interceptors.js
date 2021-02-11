@@ -7,7 +7,10 @@ export const requestHandler = (request) => {
   //set loader
   if (isHandlerEnabled(request)) {
     request.headers["language"] = "en-US";
-    request.params.api_key = "5788cd31e1d876b0148f680c1c9f8248";
+    request.params = {
+      ...request.params,
+      api_key: "5788cd31e1d876b0148f680c1c9f8248",
+    };
   }
   return request;
 };
