@@ -18,8 +18,6 @@ export default function MovieCard(props) {
       onMouseOver={() => setState({ raised: true, shadow: 2 })}
       onMouseOut={() => setState({ raised: false, shadow: 1 })}
       raised={state.raised}
-
-      // zdepth={state.shadow}
     >
       <CardActionArea>
         <CardMedia
@@ -29,8 +27,6 @@ export default function MovieCard(props) {
           style={{ boxShadow: "0rem 2rem 5rem #80808073" }}
           height="23rem"
           width="100%"
-          // height="19rem"
-          // width="12rem"
           style={{ height: "21rem" }}
           image={
             props.img

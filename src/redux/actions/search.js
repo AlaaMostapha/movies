@@ -1,6 +1,6 @@
 import * as actionType from "../actionTypes";
 
-//MOVIES
+//MOVIES search
 export const searchForMovieRequest = (query) => ({
   type: actionType.SEARCH_MOVIE_REQUEST,
   query,

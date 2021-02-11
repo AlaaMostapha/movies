@@ -27,7 +27,6 @@ function MoviesList() {
   });
   const onSubmit = (values) => {
     console.log("form state", values.search);
-    // dispatch(actions.Login(values));
     dispatch(searchActions.searchForMovieRequest(values.search));
     console.log("movies", movies);
   };

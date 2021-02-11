@@ -7,10 +7,8 @@ export const isHandlerEnabled = (config = {}) => {
     : false;
 };
 export const requestHandler = (request) => {
-  // console.log("interceptor request", request);
   //set loader
   if (isHandlerEnabled(request)) {
-    // console.log("isHandlerEnabled(request)", isHandlerEnabled(request));
   }
   return request;
 };
@@ -18,17 +16,14 @@ export const responseHandler = (response) => {
   // console.log(response);
   //stop loader
   if (isHandlerEnabled(response.config)) {
-    //   // console.log("response", response);
     //   // toast.success("Success !", {
     //   //   position: toast.POSITION.TOP_CENTER,
     //   // });
-    //   // history.push("home");
   }
   return response;
 };
 export const errorHandler = (error) => {
   const errors = error.response.data.errors;
-  // console.log("error", errors);
   //stop loader
   // toast.error(error, {
   //   position: toast.POSITION.TOP_CENTER,

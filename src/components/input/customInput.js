@@ -7,26 +7,16 @@ const useStyles = makeStyles((theme) => ({
     height: "50px",
     width: "50px",
     "& .MuiOutlinedInput-root": {
-      // width: "200px",
-      //       width: "50px",
-      // height: "50px",
       borderRadius: "10rem",
-      // height: "3rem",
-      // width: "3rem",
       background: "#000",
       borderColor: "#fff",
       boxShadow: " 0 4px 8px gray",
-      // "& fieldset": {
-      //   // borderRadius: "50%",
-      // },
       "&.Mui-focused fieldset": {
         borderWidth: "2px",
-        // width: "800px",
       },
       "&.Mui-focused input:focus": {
         borderWidth: "2px",
         color: "#fff",
-        // width: "1000px",
         "&::placeholder": {
           color: "#fff",
         },
