@@ -24,10 +24,6 @@ const MovieCard = (props) => {
           className={classes.cardImg}
           component="img"
           alt="no image yet"
-          style={{ boxShadow: "0rem 2rem 5rem #80808073" }}
-          height="23rem"
-          width="100%"
-          style={{ height: "21rem" }}
           image={
             props.img
               ? `https://image.tmdb.org/t/p/w500/${props.img}`

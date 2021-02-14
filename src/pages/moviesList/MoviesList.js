@@ -1,15 +1,14 @@
-import React, { useEffect } from "react";
-import { Container, Grid, Typography } from "@material-ui/core";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import * as moviesActions from "../../redux/actions/movies";
 import * as searchActions from "../../redux/actions/search";
 import CustomTextField from "../../components/input/customInput";
 import MovieCard from "../../components/card/Card";
-import Loader from "../../components/loader/Loader";
 import history from "../../routes/history";
 import "./MoviesList.scss";
 const MoviesList = () => {
+  const [expand, setExpand] = React.useState(false);
   const dispatch = useDispatch();
   const {
     moviesReducer: { movies },
@@ -30,78 +29,96 @@ const MoviesList = () => {
   const onSubmit = (values) => {
     dispatch(searchActions.searchForMovieRequest(values.search));
   };
+  const handleInputChange = (e) => {
+    if (e.target.value === "") {
+      dispatch(moviesActions.moviesRequest());
+    }
+  };
+  const handleInputAnimation = () => {
+    // console.log(
+    //   "clicked",
+    //   document.getElementById("search").getAttribute("aria-expanded")
+    // );
+    // const check = document
+    //   .getElementById("search")
+    //   .getAttribute("aria-expanded");
+    // if (check) {
+    //   setExpand(true);
+    // } else {
+    setExpand(true);
+    // }
+  };
   const createList = () => {
-    if (movies) {
-      return (
-        <Grid item xs={3} onClick={() => history.push(`/movies/${movies.id}`)}>
-          <MovieCard
-            img={movies.poster_path}
-            title={movies.title}
-            rate={movies.vote_average}
-          />
-        </Grid>
-      );
-    } else if (searchMovie) {
+    if (searchMovie) {
       return searchMovie.results.map((movie, i) => {
         return (
-          <Grid
-            item
-            xs={3}
-            onClick={() => history.push(`/movies/${movie.id}`)}
+          <div
+            className="col-md-3 col-sm-6 mb-4"
+            style={{ textAlign: "-webkit-center" }}
             key={i}
+            onClick={() => history.push(`/movies/${movie.id}`)}
           >
-            <MovieCard
-              img={movie.poster_path}
-              title={movie.title}
-              rate={movie.vote_average}
-            />
-          </Grid>
+            <MovieCard img={movie.poster_path} title={movie.title} movie />
+          </div>
         );
       });
     } else {
-      return <Loader />;
+      if (movies) {
+        return movies.results.map((movie, index) => {
+          return (
+            <div
+              className="col-md-3 col-sm-6 mb-4"
+              onClick={() => history.push(`/movies/${movie.id}`)}
+              key={index}
+              style={{ textAlign: "-webkit-center" }}
+            >
+              <MovieCard
+                img={movie.poster_path}
+                title={movie.title}
+                rate={movie.vote_average}
+              />
+            </div>
+          );
+        });
+      }
     }
   };
 
   return (
-    <Container maxWidth="lg">
-      <Grid>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <CustomTextField
+    <div className="container">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        onClick={() => handleInputAnimation()}
+      >
+        <div className="input-icons">
+          <i
+            className="fa fa-search icon"
+            style={{ position: "absolute", padding: "5px" }}
+          ></i>
+          <input
             type="search"
             name="search"
             placeholder="search for a movie...."
-            reference={register}
+            onChange={(e) => handleInputChange(e)}
+            ref={register}
+            id="search"
+            aria-expanded="false"
+            // className={expand ? "search-focus" : ".search-not-focus"}
           />
-          {/* <input type="text" /> */}
-          <input
-            type="submit"
-            style={{ position: "absolute", left: "-9999px" }}
-          />
-        </form>
-      </Grid>
-      <Grid container spacing={2} style={{ justifyContent: "center" }}>
-        <Grid item xs={12}>
-          <Typography
-            variant="p"
-            component="p"
-            gutterBottom
-            className="moviesFirstHead"
-          >
-            latest
-          </Typography>
-          <Typography
-            variant="p"
-            component="p"
-            gutterBottom
-            className="moviesSecondHead"
-          >
-            movie
-          </Typography>
-        </Grid>
+        </div>
+        <input
+          type="submit"
+          style={{ position: "absolute", left: "-9999px" }}
+        />
+      </form>
+      <div className="row">
+        <div className="col-12">
+          <p className="moviesFirstHead">popular</p>
+          <p className="moviesSecondHead">movie</p>
+        </div>
         {createList()}
-      </Grid>
-    </Container>
+      </div>
+    </div>
   );
 };
 

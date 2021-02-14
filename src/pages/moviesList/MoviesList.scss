@@ -17,3 +17,11 @@ form {
   font-size     : 1.2rem;
   font-weight   : 700;
 }
+
+#search[aria-expanded=false] {
+  width: 40px;
+}
+
+#search:focus {
+  width: 80px;
+}

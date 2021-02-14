@@ -1,16 +1,18 @@
 import { makeStyles } from "@material-ui/core/styles";
 export const useStyles = makeStyles({
   root: {
-    width: "14rem",
     height: "26rem",
     transition: "transform 0.15s ease-in-out",
     backgroundColor: "transparent",
     boxShadow: "none",
+    width: "fit-content",
   },
   cardImg: {
     objectFit: "fill",
     borderRadius: "15px",
-    boxShadow: "3px 3px 8px 1px rgba(0,0,0,0.46)",
+    height: "21rem",
+    width: "auto",
+    boxShadow: "0rem 2rem 5rem #80808073",
   },
   cardContent: {
     backgroundColor: "transparent",
@@ -19,8 +21,11 @@ export const useStyles = makeStyles({
   cardHovered: {
     boxShadow: "0rem 2rem 5rem #80808052",
     transform: "scale3d(1.05, 1.05, 1)",
-    background: "#37474f",
+
     borderRadius: "15px",
+    "& .MuiButtonBase-root": {
+      background: "#37474f",
+    },
     "& .MuiCard-root": {},
     "& .MuiTypography-root": {
       color: "#fff",

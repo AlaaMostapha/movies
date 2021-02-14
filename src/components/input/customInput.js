@@ -31,10 +31,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const CustomTextField = (props) => {
-  const { type, name, placeholder, reference } = props;
+  const { type, name, placeholder, reference, ...rest } = props;
   const classes = useStyles();
   return (
     <TextField
+      {...rest}
       className={classes.searchBarStyle}
       name={name}
       placeholder={placeholder}
