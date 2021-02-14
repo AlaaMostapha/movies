@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 export const useStyles = makeStyles({
   root: {
-    height: "26rem",
+    minHeight: "26rem",
     transition: "transform 0.15s ease-in-out",
     backgroundColor: "transparent",
     boxShadow: "none",

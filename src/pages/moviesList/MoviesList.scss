@@ -25,3 +25,17 @@ form {
 #search:focus {
   width: 80px;
 }
+
+form .SubmitBtn {
+  position: absolute;
+  left    : -9999px;
+}
+
+form .input-icon i.fa-search {
+  position: absolute;
+  padding : 5px;
+}
+
+.moive-col {
+  text-align: -webkit-center;
+}

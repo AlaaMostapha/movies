@@ -53,8 +53,7 @@ const MoviesList = () => {
       return searchMovie.results.map((movie, i) => {
         return (
           <div
-            className="col-md-3 col-sm-6 mb-4"
-            style={{ textAlign: "-webkit-center" }}
+            className="col-md-3 col-sm-6 mb-4 moive-col"
             key={i}
             onClick={() => history.push(`/movies/${movie.id}`)}
           >
@@ -67,10 +66,9 @@ const MoviesList = () => {
         return movies.results.map((movie, index) => {
           return (
             <div
-              className="col-md-3 col-sm-6 mb-4"
+              className="col-md-3 col-sm-6 mb-4 moive-col"
               onClick={() => history.push(`/movies/${movie.id}`)}
               key={index}
-              style={{ textAlign: "-webkit-center" }}
             >
               <MovieCard
                 img={movie.poster_path}
@@ -90,11 +88,8 @@ const MoviesList = () => {
         onSubmit={handleSubmit(onSubmit)}
         onClick={() => handleInputAnimation()}
       >
-        <div className="input-icons">
-          <i
-            className="fa fa-search icon"
-            style={{ position: "absolute", padding: "5px" }}
-          ></i>
+        <div className="input-icon">
+          <i className="fa fa-search icon"></i>
           <input
             type="search"
             name="search"
@@ -106,10 +101,7 @@ const MoviesList = () => {
             // className={expand ? "search-focus" : ".search-not-focus"}
           />
         </div>
-        <input
-          type="submit"
-          style={{ position: "absolute", left: "-9999px" }}
-        />
+        <input type="submit" className="SubmitBtn" />
       </form>
       <div className="row">
         <div className="col-12">
