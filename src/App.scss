@@ -1,3 +1,21 @@
 .display_none {
   display: none;
 }
+
+.loader {
+
+  background: #ffffff8c;
+  height    : 100%;
+  width     : 100%;
+  z-index   : 99;
+  position  : absolute;
+  left      : 50%;
+  top       : 50%;
+  transform : translate(-50%, -50%);
+}
+
+.loader svg {
+  position : absolute;
+  top      : 50%;
+  transform: translate(-50%, -50%);
+}

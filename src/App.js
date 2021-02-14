@@ -9,7 +9,7 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <Loader className="loader display_none" id="loader" />
+        <Loader className="loader display_none text-center" id="loader" />
         <Router>
           <Routes />
         </Router>
