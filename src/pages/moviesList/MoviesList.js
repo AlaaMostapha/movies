@@ -34,71 +34,53 @@ const MoviesList = () => {
       dispatch(moviesActions.moviesRequest());
     }
   };
-  const handleInputAnimation = () => {
-    // console.log(
-    //   "clicked",
-    //   document.getElementById("search").getAttribute("aria-expanded")
-    // );
-    // const check = document
-    //   .getElementById("search")
-    //   .getAttribute("aria-expanded");
-    // if (check) {
-    //   setExpand(true);
-    // } else {
-    setExpand(true);
-    // }
-  };
+
   const createList = () => {
-    if (searchMovie) {
-      return searchMovie.results.map((movie, i) => {
+    if (movies) {
+      return movies.results.map((movie, index) => {
         return (
           <div
             className="col-md-3 col-sm-6 mb-4 moive-col"
-            key={i}
             onClick={() => history.push(`/movies/${movie.id}`)}
+            key={index}
           >
-            <MovieCard img={movie.poster_path} title={movie.title} movie />
+            <MovieCard
+              img={movie.poster_path}
+              title={movie.title}
+              rate={movie.vote_average}
+            />
           </div>
         );
       });
-    } else {
-      if (movies) {
-        return movies.results.map((movie, index) => {
-          return (
-            <div
-              className="col-md-3 col-sm-6 mb-4 moive-col"
-              onClick={() => history.push(`/movies/${movie.id}`)}
-              key={index}
-            >
-              <MovieCard
-                img={movie.poster_path}
-                title={movie.title}
-                rate={movie.vote_average}
-              />
-            </div>
-          );
-        });
-      }
     }
   };
-
+  const handleInputAnimation = (e) => {
+    //expand & focus input
+    document.getElementById("search").setAttribute("aria-expanded", "true");
+    document.getElementById("search").focus();
+  };
+  const focusOutHandle = () => {
+    //collapse & focus input
+    document.getElementById("search").setAttribute("aria-expanded", "false");
+    document.getElementById("search").blur();
+  };
   return (
-    <div className="container">
+    <div className="container mt-3">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        onClick={() => handleInputAnimation()}
+        onClick={(e) => handleInputAnimation(e)}
       >
         <div className="input-icon">
           <i className="fa fa-search icon"></i>
           <input
             type="search"
             name="search"
-            placeholder="search for a movie...."
+            placeholder="search for a movie..."
             onChange={(e) => handleInputChange(e)}
             ref={register}
             id="search"
             aria-expanded="false"
-            // className={expand ? "search-focus" : ".search-not-focus"}
+            onBlur={() => focusOutHandle()}
           />
         </div>
         <input type="submit" className="SubmitBtn" />

@@ -18,12 +18,33 @@ form {
   font-weight   : 700;
 }
 
-#search[aria-expanded=false] {
-  width: 40px;
+#search::placeholder,
+#search::-webkit-input-placeholder {
+  color          : #fff;
+  // padding-left: 15px;
 }
 
-#search:focus {
-  width: 80px;
+#search {
+  box-shadow  : 0 4px 4px #cacaca;
+  height      : 2.5rem;
+  border      : 2px solid;
+  color       : #fff;
+  box-sizing  : border-box;
+  padding     : 5px;
+  padding-left: 30px;
+}
+
+#search[aria-expanded="false"] {
+  width        : 2.5rem;
+  border-radius: 50%;
+  background   : #000;
+}
+
+#search[aria-expanded="true"] {
+  width        : 13rem;
+  background   : #000;
+  border-radius: 20rem;
+  outline      : none;
 }
 
 form .SubmitBtn {
@@ -32,8 +53,11 @@ form .SubmitBtn {
 }
 
 form .input-icon i.fa-search {
-  position: absolute;
-  padding : 5px;
+  position    : absolute;
+  // padding  : 5px;
+  color       : #fff;
+  padding     : 12px 13px;
+  font-size   : 0.9rem;
 }
 
 .moive-col {
