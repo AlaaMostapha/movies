@@ -6,6 +6,11 @@ export default function moviesReducer(state = {}, action) {
         movies: action.payload,
       };
     }
+    case actionType.GENRES_RECIEVE: {
+      return {
+        genres: action.payload.genres,
+      };
+    }
     default:
       return state;
   }

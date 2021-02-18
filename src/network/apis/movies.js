@@ -5,3 +5,9 @@ export const getLastestMovies = async () => {
     handlerEnabled: true,
   });
 };
+
+export const getGenres = async () => {
+  return await axiosInstance.get("/genre/movie/list?", {
+    handlerEnabled: true,
+  });
+};
