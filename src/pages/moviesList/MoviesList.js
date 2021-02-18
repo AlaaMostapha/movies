@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import * as moviesActions from "../../redux/actions/movies";
 import * as searchActions from "../../redux/actions/search";
-import CustomTextField from "../../components/input/customInput";
+import Btn from "../../components/btn/Btn";
 import MovieCard from "../../components/card/Card";
 import history from "../../routes/history";
 import "./MoviesList.scss";
@@ -67,6 +67,7 @@ const MoviesList = () => {
   return (
     <div className="container mt-3">
       <form
+        className="moviesLitForm"
         onSubmit={handleSubmit(onSubmit)}
         onClick={(e) => handleInputAnimation(e)}
       >
@@ -85,13 +86,17 @@ const MoviesList = () => {
         </div>
         <input type="submit" className="SubmitBtn" />
       </form>
-      <div className="row">
-        <div className="col-12">
+      <div className="row mt-2">
+        <div className="col-9">
           <p className="moviesFirstHead">popular</p>
           <p className="moviesSecondHead">movie</p>
         </div>
-        {createList()}
+        <div className="col-3 text-right">
+          <Btn text="Add New Movie" href="/AddNewMovie" className="backBtn" />
+          {/* <button>Add New Movie</button> */}
+        </div>
       </div>
+      <div className="row">{createList()}</div>
     </div>
   );
 };
