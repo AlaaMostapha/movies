@@ -5,7 +5,7 @@ export const searchForMovie = async (query) => {
   return await axiosInstance.get("/search/movie?", {
     handlerEnabled: true,
     params: {
-      query: query,
+      query,
     },
   });
 };

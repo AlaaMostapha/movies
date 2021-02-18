@@ -11,7 +11,7 @@ export const useStyles = makeStyles({
     objectFit: "fill",
     borderRadius: "15px",
     height: "21rem",
-    width: "auto",
+    width: "14rem",
     boxShadow: "0rem 2rem 5rem #80808073",
   },
   cardContent: {
