@@ -16,7 +16,9 @@ const SelectArray = (props) => {
         return (
           <div className="mb-2" key={item.id}>
             <Controller
-              defaultValue={options[0] ? options[0].value : ""}
+              // defaultValue={options[0] ? options[0].value : ""}
+
+              // defaultValue={index === 0 ? "choose" : ""}
               render={({ value, onChange, onBlur }) => {
                 return (
                   <select
@@ -26,64 +28,44 @@ const SelectArray = (props) => {
                       onChange(e.target.value);
                     }}
                   >
-                    {options.map((option) => (
-                      <option key={option.value} value={option.value}>
-                        {option.value}
-                      </option>
-                    ))}
+                    {options.map((option, index) =>
+                      index == 0 ? (
+                        <option hidden disabled>
+                          Choose
+                        </option>
+                      ) : (
+                        <option key={option.value} value={option.value}>
+                          {option.value}
+                        </option>
+                      )
+                    )}
                   </select>
                 );
               }}
               name={`${name}[${index}].name`}
               control={control}
             />
-            <button
-              className="col-2 mr-2"
-              type="button"
-              onClick={() => append("")}
-            >
-              +
-            </button>
-            <button
-              className="col-2 mr-2"
-              type="button"
-              onClick={() => remove(index)}
-            >
-              -
-            </button>
+            {index === 0 && (
+              <button
+                className="col-2 mr-2"
+                type="button"
+                onClick={() => append("")}
+              >
+                +
+              </button>
+            )}
+            {index > 0 && (
+              <button
+                className="col-2 mr-2"
+                type="button"
+                onClick={() => remove(index)}
+              >
+                -
+              </button>
+            )}
           </div>
         );
       })}
-      {/* {fields.map((field, index) => (
-        <div key={index}>
-          <select
-            value={value}
-            onChange={(e) => {
-              onChange(e.target.value);
-            }}
-            name={`${name}[${index}].name`}
-            // {...rest}
-            id={field.id}
-            key={field.id}
-          >
-            {options.map((option) => {
-              return (
-                <option key={option.key} value={option.value}>
-                  {option.value}
-                </option>
-              );
-            })}
-          </select>
-          {index > 0 && (
-            <button type="button" onClick={() => remove(index)}>
-              -
-            </button>
-          )}
-          <button type="button" onClick={() => append("")}>
-            +
-          </button>
-        </div>
-      ))} */}
       <ErrorMessage name={name} errors={errors} as={<Error />} />
     </div>
   );
