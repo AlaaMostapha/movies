@@ -22,11 +22,31 @@ const AddNewMovie = () => {
       .test("fileSize", "The file is too large", (value) => {
         return value && value[0].size <= 2000000;
       }),
-    genres: Yup.array().required("required"),
-    actors: Yup.array().required("one actor at least is required"),
+    genres: Yup.array()
+      .of(
+        Yup.object().shape({
+          name: Yup.string().required("actor is required"),
+        })
+      )
+      .test("notEmptyArr", "array is empty", (value) => {
+        console.log("genre value validate", value[0]);
+        return value[0].name && value.length > 0;
+      }),
+    actors: Yup.array()
+      .of(
+        Yup.object().shape({
+          name: Yup.string().required("actor is required"),
+        })
+      )
+      .test("notEmptyArr", "array is empty", (value) => {
+        console.log("actor value validate", value);
+        return value[0].name && value.length > 0;
+      }),
     budget: Yup.number()
-      .typeError("budget must be a number")
-      .positive("budget must be positive"),
+      .moreThan(0)
+      .typeError("budget must be  a number")
+      .positive("budget must be positive")
+      .nullable(),
     releaseDate: Yup.date()
       .typeError("Release Date is required and  must be a valid date")
       .required(),
@@ -41,11 +61,18 @@ const AddNewMovie = () => {
     poster: "",
     genres: [""],
     actors: [""],
-    budget: 0,
+    budget: null,
     releaseDate: null,
     description: "",
   };
-  const { register, handleSubmit, control, errors, formState } = useForm({
+  const {
+    register,
+    handleSubmit,
+    control,
+    errors,
+    formState,
+    setValue,
+  } = useForm({
     mode: "onChange",
     defaultValues: defaultValues,
     resolver: yupResolver(schema),
@@ -53,6 +80,7 @@ const AddNewMovie = () => {
     reValidateMode: "onChange",
   });
   const { isDirty, isValid } = formState;
+  console.log("formState", formState);
   const onSubmit = (data) => {
     console.log(data);
   };
@@ -137,7 +165,8 @@ const AddNewMovie = () => {
               label="Movie Actors"
               control={control}
               errors={errors}
-              register={register}
+              // register={register}
+              setValue={setValue}
             />
             <FormControl
               kind="SelectArray"
