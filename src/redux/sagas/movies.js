@@ -16,7 +16,6 @@ function* handleGetGenres() {
   } catch (err) {}
 }
 function* handleUploadImg(action) {
-  console.log("saga", action);
   try {
     yield call(postImage, action.payload);
   } catch (err) {}

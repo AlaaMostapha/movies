@@ -29,7 +29,6 @@ const AddNewMovie = () => {
         })
       )
       .test("notEmptyArr", "array is empty", (value) => {
-        console.log("genre value validate", value[0]);
         return value[0].name && value.length > 0;
       }),
     actors: Yup.array()
@@ -39,7 +38,6 @@ const AddNewMovie = () => {
         })
       )
       .test("notEmptyArr", "array is empty", (value) => {
-        console.log("actor value validate", value);
         return value[0].name && value.length > 0;
       }),
     budget: Yup.number()
@@ -58,7 +56,7 @@ const AddNewMovie = () => {
   });
   const defaultValues = {
     title: "",
-    poster: "",
+    // poster: {},
     genres: [""],
     actors: [""],
     budget: null,
@@ -87,9 +85,9 @@ const AddNewMovie = () => {
 
   const uploadImg = (e) => {
     const file = e.target.files[0];
-    console.log("Uploaded a file", e.target.files[0].name);
+    // console.log("Uploaded a file", e.target.files[0].name);
     moviesActions.uploadImg(file);
-    console.log(postImage(file));
+    // console.log(postImage(file));
   };
   useEffect(() => {
     //when component mount get allmoviegenres
@@ -122,19 +120,31 @@ const AddNewMovie = () => {
               label="Movie Title"
               control={control}
               errors={errors}
-              s="d"
             />
-            <FormControl
+            <input
+              type="file"
+              name="poster"
+              ref={register}
+              onChange={(e) => {
+                setValue("file", e.target.value.files);
+              }}
+            />
+            {errors.poster?.message && (
+              <div className="error">{errors.poster.message}</div>
+            )}
+
+            {/* <FormControl
               kind="input"
               type="file"
               name="poster"
               label="Movie Poster"
               control={control}
               errors={errors}
-              // value={}
-              onChange={(e) => uploadImg(e)}
               accept=".png, .jpg, .jpeg"
-            />
+              onChange={(e) => {
+                setValue("file", e.target.value.files);
+              }}
+            /> */}
             <FormControl
               kind="input"
               type="number"
@@ -177,10 +187,9 @@ const AddNewMovie = () => {
               options={handleGenresOptions()}
             />
             <div className="my-4">
-              <button type="submit">submit</button>
-              {/* <button type="submit" disabled={!isDirty || !isValid}>
+              <button type="submit" disabled={!isDirty || !isValid}>
                 submit
-              </button> */}
+              </button>
             </div>
           </form>
         </div>

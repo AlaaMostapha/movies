@@ -28,17 +28,11 @@ const SelectArray = (props) => {
                       onChange(e.target.value);
                     }}
                   >
-                    {options.map((option, index) =>
-                      index == 0 ? (
-                        <option hidden disabled>
-                          Choose
-                        </option>
-                      ) : (
-                        <option key={option.value} value={option.value}>
-                          {option.value}
-                        </option>
-                      )
-                    )}
+                    {options.map((option, index) => (
+                      <option key={option.value} value={option.value}>
+                        {option.value}
+                      </option>
+                    ))}
                   </select>
                 );
               }}

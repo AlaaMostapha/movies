@@ -7,15 +7,14 @@ const Select = (props) => {
   const { field } = useController(props);
   return (
     <div>
-      <select name={name} {...field} id={name}>
-        {options ||
-          [].map((option) => {
-            return (
-              <option key={option.value} value={option.value}>
-                {option.value}
-              </option>
-            );
-          })}
+      <select name={name} {...field}>
+        {options.map((option) => {
+          return (
+            <option key={option.value} value={option.value}>
+              {option.value}
+            </option>
+          );
+        })}
       </select>
     </div>
   );
