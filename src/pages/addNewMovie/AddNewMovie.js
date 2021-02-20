@@ -121,6 +121,7 @@ const AddNewMovie = () => {
               control={control}
               errors={errors}
             />
+            <label htmlFor="poster">Movie Poster</label>
             <input
               type="file"
               name="poster"
