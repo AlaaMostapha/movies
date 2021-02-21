@@ -121,20 +121,7 @@ const AddNewMovie = () => {
               control={control}
               errors={errors}
             />
-            <label htmlFor="poster">Movie Poster</label>
-            <input
-              type="file"
-              name="poster"
-              ref={register}
-              onChange={(e) => {
-                setValue("file", e.target.value.files);
-              }}
-            />
-            {errors.poster?.message && (
-              <div className="error">{errors.poster.message}</div>
-            )}
-
-            {/* <FormControl
+            <FormControl
               kind="input"
               type="file"
               name="poster"
@@ -142,10 +129,7 @@ const AddNewMovie = () => {
               control={control}
               errors={errors}
               accept=".png, .jpg, .jpeg"
-              onChange={(e) => {
-                setValue("file", e.target.value.files);
-              }}
-            /> */}
+            />
             <FormControl
               kind="input"
               type="number"
@@ -188,9 +172,7 @@ const AddNewMovie = () => {
               options={handleGenresOptions()}
             />
             <div className="my-4">
-              <button type="submit" disabled={!isDirty || !isValid}>
-                submit
-              </button>
+              <button type="submit">submit</button>
             </div>
           </form>
         </div>
