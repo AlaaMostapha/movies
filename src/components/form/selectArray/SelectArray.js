@@ -16,9 +16,6 @@ const SelectArray = (props) => {
         return (
           <div className="mb-2" key={item.id}>
             <Controller
-              // defaultValue={options[0] ? options[0].value : ""}
-
-              // defaultValue={index === 0 ? "choose" : ""}
               render={({ value, onChange, onBlur }) => {
                 return (
                   <select

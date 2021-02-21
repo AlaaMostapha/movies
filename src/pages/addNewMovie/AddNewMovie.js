@@ -118,6 +118,7 @@ const AddNewMovie = () => {
               name="title"
               label="Movie Title"
               errors={errors}
+              control={control}
               register={register}
             />
 
@@ -126,8 +127,9 @@ const AddNewMovie = () => {
               type="file"
               name="poster"
               label="Movie Poster"
-              register={register}
+              control={control}
               errors={errors}
+              register={register}
               accept=".png, .jpg, .jpeg"
               onChange={(e) => uploadImg(e)}
             />
@@ -136,8 +138,9 @@ const AddNewMovie = () => {
               type="number"
               name="budget"
               label="Movie Budget"
-              register={register}
+              control={control}
               errors={errors}
+              register={register}
             />
             <FormControl
               kind="date"
@@ -173,9 +176,7 @@ const AddNewMovie = () => {
               options={handleGenresOptions()}
             />
             <div className="my-4">
-              <button type="submit" disabled={!isDirty || !isValid}>
-                submit
-              </button>
+              <button type="submit">submit</button>
             </div>
           </form>
         </div>

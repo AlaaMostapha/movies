@@ -4,7 +4,7 @@ import { ErrorMessage } from "@hookform/error-message";
 import Error from "../error/Error";
 const InputArray = (props) => {
   const { name, errors, label, control, register, setValue } = props;
-  const { fields, remove, insert, append } = useFieldArray({
+  const { fields, remove, append } = useFieldArray({
     control,
     name,
   });
@@ -16,7 +16,7 @@ const InputArray = (props) => {
       {fields.map((field, index) => (
         <div className="mb-2" key={index}>
           <Controller
-            render={({ value, onChange, onBlur }) => {
+            render={({ value, onChange }) => {
               return (
                 <input
                   type="text"
