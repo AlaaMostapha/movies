@@ -85,8 +85,9 @@ const AddNewMovie = () => {
 
   const uploadImg = (e) => {
     const file = e.target.files[0];
-    // console.log("Uploaded a file", e.target.files[0]);
+    // console.log("Uploaded a file", e.target.files[0].name);
     moviesActions.uploadImg(file);
+    // console.log(postImage(file));
   };
   useEffect(() => {
     //when component mount get allmoviegenres
@@ -117,11 +118,9 @@ const AddNewMovie = () => {
               type="text"
               name="title"
               label="Movie Title"
-              errors={errors}
               control={control}
-              register={register}
+              errors={errors}
             />
-
             <FormControl
               kind="input"
               type="file"
@@ -129,9 +128,7 @@ const AddNewMovie = () => {
               label="Movie Poster"
               control={control}
               errors={errors}
-              register={register}
               accept=".png, .jpg, .jpeg"
-              onChange={(e) => uploadImg(e)}
             />
             <FormControl
               kind="input"
@@ -140,7 +137,6 @@ const AddNewMovie = () => {
               label="Movie Budget"
               control={control}
               errors={errors}
-              register={register}
             />
             <FormControl
               kind="date"
