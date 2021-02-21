@@ -9,6 +9,7 @@ const Input = (props) => {
     <div>
       <div>
         <label htmlFor={name}>{label}</label>
+        {props.astric && <span className="error">*</span>}
       </div>
       {/* this commented code cause an issue about input type=file 
       it send value as name only and not whole obj */}

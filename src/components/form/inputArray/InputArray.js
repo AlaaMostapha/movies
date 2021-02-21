@@ -12,6 +12,7 @@ const InputArray = (props) => {
     <div>
       <div>
         <label htmlFor={name}>{label}</label>
+        {props.astric && <span className="error">*</span>}
       </div>
       {fields.map((field, index) => (
         <div className="mb-2" key={index}>

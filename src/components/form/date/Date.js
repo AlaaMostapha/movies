@@ -12,6 +12,7 @@ const Date = (props) => {
     <div>
       <div>
         <label htmlFor={name}>{label}</label>
+        {props.astric && <span className="error">*</span>}
       </div>
       <ReactDatePicker
         id={name}

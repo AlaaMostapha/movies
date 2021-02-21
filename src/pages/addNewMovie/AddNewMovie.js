@@ -120,6 +120,8 @@ const AddNewMovie = () => {
               label="Movie Title"
               control={control}
               errors={errors}
+              register={register}
+              astric="add"
             />
             <FormControl
               kind="input"
@@ -128,7 +130,9 @@ const AddNewMovie = () => {
               label="Movie Poster"
               control={control}
               errors={errors}
+              register={register}
               accept=".png, .jpg, .jpeg"
+              astric="add"
             />
             <FormControl
               kind="input"
@@ -137,6 +141,7 @@ const AddNewMovie = () => {
               label="Movie Budget"
               control={control}
               errors={errors}
+              register={register}
             />
             <FormControl
               kind="date"
@@ -144,6 +149,7 @@ const AddNewMovie = () => {
               label="Release Date"
               control={control}
               errors={errors}
+              astric="add"
             />
             <FormControl
               kind="textarea"
@@ -162,6 +168,7 @@ const AddNewMovie = () => {
               errors={errors}
               // register={register}
               setValue={setValue}
+              astric="add"
             />
             <FormControl
               kind="SelectArray"
@@ -170,9 +177,12 @@ const AddNewMovie = () => {
               control={control}
               errors={errors}
               options={handleGenresOptions()}
+              astric="add"
             />
             <div className="my-4">
-              <button type="submit">submit</button>
+              <button type="submit" disabled={!isDirty || !isValid}>
+                submit
+              </button>
             </div>
           </form>
         </div>

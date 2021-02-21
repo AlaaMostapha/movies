@@ -12,6 +12,7 @@ const SelectArray = (props) => {
   return (
     <div>
       <label htmlFor={name}>{label}</label>
+      {props.astric && <span className="error">*</span>}
       {fields.map((item, index) => {
         return (
           <div className="mb-2" key={item.id}>
