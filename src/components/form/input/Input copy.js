@@ -5,7 +5,6 @@ import Error from "../error/Error";
 const Input = (props) => {
   const { name, type, errors, label, control, register, ...rest } = props;
   const { field } = useController(props);
-  console.log(props);
   return (
     <div>
       <div>

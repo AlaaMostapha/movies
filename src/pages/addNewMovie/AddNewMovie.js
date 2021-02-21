@@ -78,16 +78,14 @@ const AddNewMovie = () => {
     reValidateMode: "onChange",
   });
   const { isDirty, isValid } = formState;
-  console.log("formState", formState);
+
   const onSubmit = (data) => {
     console.log(data);
   };
 
   const uploadImg = (e) => {
     const file = e.target.files[0];
-    // console.log("Uploaded a file", e.target.files[0].name);
     moviesActions.uploadImg(file);
-    // console.log(postImage(file));
   };
   useEffect(() => {
     //when component mount get allmoviegenres
