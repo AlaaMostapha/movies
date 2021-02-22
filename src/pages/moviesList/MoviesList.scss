@@ -20,8 +20,7 @@ form.moviesLitForm {
 
 #search::placeholder,
 #search::-webkit-input-placeholder {
-  color          : #fff;
-  // padding-left: 15px;
+  color: #fff;
 }
 
 #search {
@@ -53,11 +52,10 @@ form .SubmitBtn {
 }
 
 form .input-icon i.fa-search {
-  position    : absolute;
-  // padding  : 5px;
-  color       : #fff;
-  padding     : 12px 13px;
-  font-size   : 0.9rem;
+  position : absolute;
+  color    : #fff;
+  padding  : 12px 13px;
+  font-size: 0.9rem;
 }
 
 .moive-col {

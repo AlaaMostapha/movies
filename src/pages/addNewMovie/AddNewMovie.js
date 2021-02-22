@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import * as moviesActions from "../../redux/actions/movies";
-import { postImage } from "../../network/apis/images";
 import FormControl from "../../components/form/FormControl";
 const AddNewMovie = () => {
   //ACTIONS DISPATCH
@@ -78,7 +77,6 @@ const AddNewMovie = () => {
     reValidateMode: "onChange",
   });
   const { isDirty, isValid } = formState;
-
   const onSubmit = (data) => {
     console.log(data);
   };
@@ -131,6 +129,7 @@ const AddNewMovie = () => {
               register={register}
               accept=".png, .jpg, .jpeg"
               astric="add"
+              onChange={() => uploadImg()}
             />
             <FormControl
               kind="input"
@@ -162,17 +161,15 @@ const AddNewMovie = () => {
               kind="inputArray"
               name="actors"
               label="Movie Actors"
-              control={control}
               errors={errors}
-              // register={register}
-              setValue={setValue}
+              register={register}
               astric="add"
             />
             <FormControl
               kind="SelectArray"
               name="genres"
               label="Movie Genres"
-              control={control}
+              register={register}
               errors={errors}
               options={handleGenresOptions()}
               astric="add"
