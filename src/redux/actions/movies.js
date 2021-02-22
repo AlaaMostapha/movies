@@ -21,3 +21,12 @@ export const uploadImg = (payload) => ({
   type: actionType.UPLOAD_IMG,
   payload,
 });
+//ADD NEW MOVIE
+export const addNewMovieRequest = (payload) => ({
+  type: actionType.ADD_NEW_MOVIE_REQUEST,
+  payload,
+});
+export const addNewMovieRecieve = (payload) => ({
+  type: actionType.ADD_NEW_MOVIE_RECIEVE,
+  payload,
+});
