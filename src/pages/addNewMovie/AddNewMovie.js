@@ -127,7 +127,7 @@ const AddNewMovie = () => {
               register={register}
               accept=".png, .jpg, .jpeg"
               astric="add"
-              onChange={() => uploadImg()}
+              onChange={(e) => uploadImg(e)}
             />
             <FormControl
               kind="input"
