@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
@@ -24,7 +24,7 @@ const AddNewMovie = () => {
     genres: Yup.array()
       .of(
         Yup.object().shape({
-          name: Yup.string().required("actor is required"),
+          name: Yup.string(),
         })
       )
       .test("notEmptyArr", "array is empty", (value) => {
@@ -33,16 +33,15 @@ const AddNewMovie = () => {
     actors: Yup.array()
       .of(
         Yup.object().shape({
-          name: Yup.string().required("actor is required"),
+          name: Yup.string(),
         })
       )
       .test("notEmptyArr", "array is empty", (value) => {
         return value[0].name && value.length > 0;
       }),
     budget: Yup.number()
-      .moreThan(0)
       .typeError("budget must be  a number")
-      .positive("budget must be positive")
+      .min(0)
       .nullable(),
     releaseDate: Yup.date()
       .typeError("Release Date is required and  must be a valid date")
@@ -58,7 +57,7 @@ const AddNewMovie = () => {
     // poster: {},
     genres: [""],
     actors: [""],
-    budget: null,
+    budget: 0,
     releaseDate: null,
     description: "",
   };
