@@ -73,7 +73,7 @@ const MovieDetails = (props) => {
             )}
 
             <div className="text-right">
-              <Btn text="Back" href="/movies" className="backBtn" />
+              <Btn text="Back" href="/movies" className="generalBtn" />
             </div>
           </div>
         </div>
