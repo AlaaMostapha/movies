@@ -1,7 +1,13 @@
 @import './variables';
+@import './btns';
 
 input,
 textarea,
 select {
-  width: 100%;
+  width        : 100%;
+  border-radius: 15px;
+}
+
+input[type="file"] {
+  border-radius: 0;
 }
