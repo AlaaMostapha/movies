@@ -92,7 +92,11 @@ const MoviesList = () => {
           <p className="moviesSecondHead">movie</p>
         </div>
         <div className="col-3 text-right">
-          <Btn text="Add New Movie" href="/AddNewMovie" className="backBtn" />
+          <Btn
+            text="Add New Movie"
+            href="/AddNewMovie"
+            className="generalBtn"
+          />
           {/* <button>Add New Movie</button> */}
         </div>
       </div>
