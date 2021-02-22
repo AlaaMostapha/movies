@@ -114,7 +114,6 @@ const AddNewMovie = () => {
               type="text"
               name="title"
               label="Movie Title"
-              control={control}
               errors={errors}
               register={register}
               astric="add"
@@ -124,7 +123,6 @@ const AddNewMovie = () => {
               type="file"
               name="poster"
               label="Movie Poster"
-              control={control}
               errors={errors}
               register={register}
               accept=".png, .jpg, .jpeg"
@@ -136,7 +134,6 @@ const AddNewMovie = () => {
               type="number"
               name="budget"
               label="Movie Budget"
-              control={control}
               errors={errors}
               register={register}
             />
@@ -162,14 +159,14 @@ const AddNewMovie = () => {
               name="actors"
               label="Movie Actors"
               errors={errors}
-              register={register}
+              control={control}
               astric="add"
             />
             <FormControl
               kind="SelectArray"
               name="genres"
               label="Movie Genres"
-              register={register}
+              control={control}
               errors={errors}
               options={handleGenresOptions()}
               astric="add"
