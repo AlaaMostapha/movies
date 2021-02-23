@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import * as Yup from "yup";
 import * as moviesActions from "../../redux/actions/movies";
 import FormControl from "../../components/form/FormControl";
@@ -114,6 +116,7 @@ const AddNewMovie = () => {
 
   return (
     <div className="container mt-3">
+      <ToastContainer limit={1} />
       <div className="row justify-content-center">
         <div className="col-6">
           <h3 className="text-center">Add New Movie</h3>
