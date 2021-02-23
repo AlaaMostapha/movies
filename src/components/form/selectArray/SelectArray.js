@@ -2,6 +2,7 @@ import React from "react";
 import { useFieldArray, Controller } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import Error from "../error/Error";
+import Btn from "../../btn/Btn";
 const SelectArray = (props) => {
   const {
     name,
@@ -13,58 +14,69 @@ const SelectArray = (props) => {
     defaultValue,
     ...rest
   } = props;
-  //  const { field } = useController(props);
-  const { fields, remove, insert, append } = useFieldArray({
+  const { fields, remove, append } = useFieldArray({
     control,
     name,
   });
+   const removeFun = (index) => {
+     if (fields.length != 1) {
+       remove(index);
+     } else {
+       alert("genre field is rquired");
+     }
+   };
   return (
-    <div>
-      <label htmlFor={name}>{label}</label>
-      {props.astric && <span className="error">*</span>}
+    <div className="mb-2">
+      <div className="row mb-2">
+        <div className="col-6">
+          <label htmlFor={name} className="labelStyle">
+            {label}
+          </label>
+          {props.astric && <span className="error">*</span>}
+        </div>
+        <div className="col-6">
+          <Btn
+            className="addNewBtn w-100"
+            type="button"
+            onClick={() => append("")}
+            text="Add New Genre"
+          />
+        </div>
+      </div>
       {fields.map((item, index) => {
         return (
-          <div className="mb-2" key={item.id}>
-            <Controller
-              defaultValue={options[0]?.value ? options[0].value : "Action"}
-              render={({ value, onChange, onBlur }) => {
-                return (
-                  <select
-                    className="col-9 mr-2"
-                    value={value}
-                    onChange={(e) => {
-                      onChange(e.target.value);
-                    }}
-                  >
-                    {options.map((option, index) => (
-                      <option key={option.value} value={option.value}>
-                        {option.value}
-                      </option>
-                    ))}
-                  </select>
-                );
-              }}
-              name={`${name}[${index}].name`}
-              control={control}
-            />
-            {index === 0 && (
-              <button
-                className="col-2 mr-2 actionBtn"
+          <div className="row mb-2 mx-2" key={item.id}>
+            <div className="col-8">
+              <Controller
+                defaultValue={options[0]?.value ? options[0].value : "Action"}
+                render={({ value, onChange, onBlur }) => {
+                  return (
+                    <select
+                      value={value}
+                      onChange={(e) => {
+                        onChange(e.target.value);
+                      }}
+                    >
+                      {options.map((option, index) => (
+                        <option key={option.value} value={option.value}>
+                          {option.value}
+                        </option>
+                      ))}
+                    </select>
+                  );
+                }}
+                name={`${name}[${index}].name`}
+                control={control}
+              />
+            </div>
+            <div className="col-3">
+              <Btn
+                className="removeBtn"
                 type="button"
-                onClick={() => append("")}
-              >
-                +
-              </button>
-            )}
-            {index > 0 && (
-              <button
-                className="col-2 mr-2 actionBtn"
-                type="button"
-                onClick={() => remove(index)}
-              >
-                -
-              </button>
-            )}
+                onClick={() => removeFun(index)}
+                text="Remove"
+              />
+            </div>
           </div>
         );
       })}
