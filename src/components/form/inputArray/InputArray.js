@@ -21,7 +21,7 @@ const InputArray = (props) => {
               return (
                 <input
                   type="text"
-                  className="col-7 mr-2"
+                  className="col-9 mr-2"
                   value={value}
                   onChange={(e) => {
                     onChange(e.target.value);
@@ -29,6 +29,7 @@ const InputArray = (props) => {
                 />
               );
             }}
+            defaultValue={field.name}
             key={field.id} // important to include key with field's id
             id={field.id}
             name={`${name}[${index}].name`}
@@ -36,7 +37,7 @@ const InputArray = (props) => {
           />
           {index > 0 && (
             <button
-              className="col-2 mr-2"
+              className="col-2 mr-2 actionBtn"
               type="button"
               onClick={() => remove(index)}
             >
@@ -44,7 +45,11 @@ const InputArray = (props) => {
             </button>
           )}
           {index === 0 && (
-            <button className="col-2" type="button" onClick={() => append("")}>
+            <button
+              className="col-2 actionBtn"
+              type="button"
+              onClick={() => append("")}
+            >
               +
             </button>
           )}
