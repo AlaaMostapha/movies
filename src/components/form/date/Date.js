@@ -1,9 +1,10 @@
 import React from "react";
 import { useController } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
-import Error from "../error/Error";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Error from "../error/Error";
+import "./date.scss";
 const Date = (props) => {
   const { name, errors, label, ...rest } = props;
   const { field } = useController(props);
