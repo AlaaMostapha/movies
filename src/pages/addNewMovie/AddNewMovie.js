@@ -16,8 +16,7 @@ const AddNewMovie = () => {
 
   const uploadImg = (e) => {
     const file = e.target.files[0];
-    console.log("file", file);
-    dispatch(moviesActions.uploadImg(file));
+    // console.log("file", file);
   };
 
   useEffect(() => {
@@ -107,7 +106,7 @@ const AddNewMovie = () => {
     reValidateMode: "onChange",
   });
   const { isDirty, isValid } = formState;
-  console.log("form state", formState);
+  // console.log("form state", formState);
   const onSubmit = (data) => {
     console.log("data", data);
     dispatch(moviesActions.addNewMovieRequest(data));
@@ -196,7 +195,7 @@ const AddNewMovie = () => {
                 text="Add New Movie"
                 type="submit"
                 className="generalBtn"
-                // disabled={!isDirty || !isValid}
+                disabled={!isDirty || !isValid}
               />
             </div>
           </form>

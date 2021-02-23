@@ -19,20 +19,21 @@ function* handleGetGenres() {
     yield put(genresRecieve(response.data));
   } catch (err) {}
 }
-function* handleUploadImg(action) {
-  try {
-    yield call(postImage, action.payload);
-  } catch (err) {
-    console.log("saga err", err);
-  }
-}
 function* handleAddNewMovie(action) {
   try {
-    const response = action.payload;
-    console.log("response", response);
-    // if (response) {
-    //   history.push("/movies");
-    // }
-  } catch (err) {}
+    //upload img
+    const imgUploadResponse = yield call(postImage, action.payload.poster[0]);
+    if (imgUploadResponse) {
+      //if img is uploaded successfully then submit (send) data
+      const response = action.payload;
+      //if data submitted successfully the redirect to movies page
+      if (response) {
+        history.push("/movies");
+      }
+    }
+  } catch (err) {
+    console.log("saga err", err);
+    console.log("err msg", err.message);
+  }
 }
-export { handleGetMovies, handleGetGenres, handleUploadImg, handleAddNewMovie };
+export { handleGetMovies, handleGetGenres, handleAddNewMovie };

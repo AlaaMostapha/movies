@@ -16,11 +16,6 @@ export const genresRecieve = (payload) => ({
   type: actionType.GENRES_RECIEVE,
   payload,
 });
-//UPLOAD IMG
-export const uploadImg = (payload) => ({
-  type: actionType.UPLOAD_IMG,
-  payload,
-});
 //ADD NEW MOVIE
 export const addNewMovieRequest = (payload) => ({
   type: actionType.ADD_NEW_MOVIE_REQUEST,

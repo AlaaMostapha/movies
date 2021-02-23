@@ -12,7 +12,6 @@ function* watchAll() {
     takeLatest(movieActionType.SINGLE_MOVIE_REQUEST, handleGetSingleMovie),
     takeLatest(searchActionType.SEARCH_MOVIE_REQUEST, handleSearch),
     takeLatest(moviesActionType.GENRES_REQUEST, handleMovie.handleGetGenres),
-    takeLatest(moviesActionType.UPLOAD_IMG, handleMovie.handleUploadImg),
     takeLatest(
       moviesActionType.ADD_NEW_MOVIE_REQUEST,
       handleMovie.handleAddNewMovie
