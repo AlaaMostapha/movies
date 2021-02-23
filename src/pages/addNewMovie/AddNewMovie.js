@@ -9,9 +9,34 @@ import Btn from "../../components/btn/Btn";
 const AddNewMovie = () => {
   //ACTIONS DISPATCH
   const dispatch = useDispatch();
+
   const {
     moviesReducer: { genres },
   } = useSelector((state) => state);
+
+  const uploadImg = (e) => {
+    const file = e.target.files[0];
+    console.log("file", file);
+    dispatch(moviesActions.uploadImg(file));
+  };
+
+  useEffect(() => {
+    //when component mount get allmoviegenres
+    dispatch(moviesActions.genresRequest());
+  }, []);
+
+  const handleGenresOptions = () => {
+    if (genres) {
+      return genres.map((genre) => {
+        return {
+          key: genre.id,
+          value: genre.name,
+        };
+      });
+    } else {
+      return [];
+    }
+  };
   //REACT-HOOK-FORM
   const defaultValues = {
     title: "",
@@ -41,14 +66,10 @@ const AddNewMovie = () => {
         return value.length;
       })
       .test("fileType", "Unsupported File Format", (value) => {
-        if (value.length > 0) {
-          return SUPPORTED_FORMATS.includes(value[0].type);
-        }
-        return true;
+        return value.length && SUPPORTED_FORMATS.includes(value[0].type);
       })
       .test("fileSize", "The file is too large", (value) => {
-        if (value.length > 0) return value[0]?.size <= FILE_SIZE;
-        return true;
+        return value.length && value[0]?.size <= FILE_SIZE;
       }),
     genres: Yup.array()
       .of(
@@ -78,7 +99,6 @@ const AddNewMovie = () => {
       (val) => val.length <= 500
     ),
   });
-
   const { register, handleSubmit, control, errors, formState } = useForm({
     mode: "onChange",
     defaultValues: defaultValues,
@@ -91,29 +111,6 @@ const AddNewMovie = () => {
   const onSubmit = (data) => {
     console.log("data", data);
     dispatch(moviesActions.addNewMovieRequest(data));
-  };
-
-  const uploadImg = (e) => {
-    const file = e.target.files[0];
-    console.log("file", file);
-    dispatch(moviesActions.uploadImg(file));
-  };
-  useEffect(() => {
-    //when component mount get allmoviegenres
-    dispatch(moviesActions.genresRequest());
-  }, []);
-
-  const handleGenresOptions = () => {
-    if (genres) {
-      return genres.map((genre) => {
-        return {
-          key: genre.id,
-          value: genre.name,
-        };
-      });
-    } else {
-      return [];
-    }
   };
 
   return (
@@ -199,7 +196,7 @@ const AddNewMovie = () => {
                 text="Add New Movie"
                 type="submit"
                 className="generalBtn"
-                disabled={!isDirty || !isValid}
+                // disabled={!isDirty || !isValid}
               />
             </div>
           </form>
