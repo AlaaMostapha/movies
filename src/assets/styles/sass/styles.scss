@@ -11,3 +11,10 @@ select {
 input[type="file"] {
   border-radius: 0;
 }
+
+.success {
+  color      : green;
+  margin     : 1rem;
+  font-weight: 600;
+  font-style : oblique;
+}

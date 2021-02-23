@@ -79,15 +79,8 @@ const AddNewMovie = () => {
     ),
   });
 
-  const {
-    register,
-    handleSubmit,
-    control,
-    errors,
-    formState,
-    setValue,
-  } = useForm({
-    mode: "onSubmit",
+  const { register, handleSubmit, control, errors, formState } = useForm({
+    mode: "onChange",
     defaultValues: defaultValues,
     resolver: yupResolver(schema),
     shouldFocusError: true,
@@ -128,9 +121,6 @@ const AddNewMovie = () => {
       <div className="row justify-content-center">
         <div className="col-6">
           <h3 className="text-center">Add New Movie</h3>
-          {formState.isValid && (
-            <div className="success">Form submitted successfully</div>
-          )}
           <form onSubmit={handleSubmit(onSubmit)}>
             <FormControl
               kind="input"
@@ -197,9 +187,20 @@ const AddNewMovie = () => {
               options={handleGenresOptions()}
               astric="add"
             />
+
             <div className="my-4 text-center">
+              {formState.isValid && (
+                <div className="success">
+                  You Form Is Valid Just Add A New Movie &#8595;
+                </div>
+              )}
               {/* <button type="submit">submit</button> */}
-              <Btn text="Add New Movie" type="submit" className="generalBtn" />
+              <Btn
+                text="Add New Movie"
+                type="submit"
+                className="generalBtn"
+                disabled={!isDirty || !isValid}
+              />
             </div>
           </form>
         </div>
