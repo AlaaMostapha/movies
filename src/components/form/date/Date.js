@@ -10,9 +10,11 @@ const Date = (props) => {
   const { field } = useController(props);
   const { value, onChange, onBlur } = field;
   return (
-    <div>
+    <div className="mb-2">
       <div>
-        <label htmlFor={name}>{label}</label>
+        <label htmlFor={name} className="labelStyle">
+          {label}
+        </label>
         {props.astric && <span className="error">*</span>}
       </div>
       <ReactDatePicker

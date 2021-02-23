@@ -2,8 +2,35 @@
   background-color: #263238 !important;
   color           : #fff !important;
   border-radius   : 15px !important;
+   box-shadow : 0rem 0rem 0.5rem 1px #00000052 !important;
 }
 
 .actionBtn {
   border-radius: 15px;
+  box-shadow : 0rem 0rem 0.5rem 1px #00000052 !important;
+  }
+
+  input[type="file"i]::-webkit-file-upload-button,
+  .addNewBtn {
+    background-color   : #d29001 !important;
+    color              : #fff !important;
+    border             : transparent !important;
+    // box-shadow      : 0rem 0rem 0.5rem 1px #00000052 !important;
+    border-radius      : 15px !important;
+    font-size          : 12px !important;
+  }
+
+  input[type="file"i]::-webkit-file-upload-button {
+    font-size    : 17px !important;
+    padding-right: 15px;
+    padding-left : 15px;
+    border       : 2px solid #000;
+  }
+
+  .removeBtn {
+    background-color: rgb(207, 57, 57) !important;
+    color           : #fff !important;
+    border          : transparent !important;
+    border-radius   : 15px !important;
+    font-size       : 12px !important;
 }

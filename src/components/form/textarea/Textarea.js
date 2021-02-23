@@ -10,9 +10,11 @@ const Textarea = (props) => {
     setCharCount(e.target.value.length);
   };
   return (
-    <div>
+    <div className="mb-2">
       <div>
-        <label htmlFor={name}>{label}</label>
+        <label htmlFor={name} className="labelStyle">
+          {label}
+        </label>
         {props.astric && <span className="error">*</span>}
       </div>
       <textarea
